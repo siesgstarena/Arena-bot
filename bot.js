@@ -25,7 +25,7 @@ client.on('messageCreate',async message => {
         }
         else{
             const embededUser = await fetchUser(username);
-            console.log(embededUser);
+            // console.log(embededUser);
             message.channel.send({ embeds: [embededUser] });
         }
     }
