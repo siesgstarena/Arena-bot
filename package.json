@@ -6,6 +6,7 @@
   "author": "YourDad07 <salmanadhikari415@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "node bot.js",
     "start-dev": "nodemon bot.js"
   },
   "devDependencies": {
