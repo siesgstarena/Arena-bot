@@ -9,6 +9,10 @@
     "start": "node bot.js",
     "start-dev": "nodemon bot.js"
   },
+  "engines": {
+    "node": "16.15.1",
+    "yarn": "1.22.19"
+  },
   "devDependencies": {
     "nodemon": "^2.0.19"
   },
