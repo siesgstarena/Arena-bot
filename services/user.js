@@ -9,7 +9,6 @@ const ARENA_DEFAULT_PROFILE_LOGO="https://res.cloudinary.com/siesgstarena/image/
 
 const fetchUser = async (username) => {
     try {
-
         const res = await axios.get(`http://arena.siesgst.ac.in/api/user?username=${username}`, { headers: HEADER });
         const user = res.data;
         const exampleEmbed = new MessageEmbed()
@@ -24,15 +23,14 @@ const fetchUser = async (username) => {
                 { name: 'Accepted', value: `${user.submissionStats.accepted}`, inline: true },
                 { name: 'Wrong Answer', value: `${user.submissionStats.wrongAnswer}`, inline: true },
             )   
-            .setImage(`https://www.github.com/${user.githubLink}.png?size=500
-`)
+            .setImage(`https://www.github.com/${user.githubLink}.png?size=500`)
             .setTimestamp()
             .setFooter({
-                text: 'Thanks For Using Me', iconURL: `https://www.github.com/${user.githubLink}.png?size=500
-` });
+                text: 'Thanks For Using Me', iconURL: `https://www.github.com/${user.githubLink}.png?size=500`});
         return exampleEmbed;
     }
     catch (err) {
+        console.log(err);
         return new MessageEmbed()
             .setTitle("Error")
     }
