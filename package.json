@@ -1,0 +1,18 @@
+{
+  "name": "dicord-bot",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "repository": "git@github.com:Arena-Tasks/dicord-bot.git",
+  "author": "YourDad07 <salmanadhikari415@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start-dev": "nodemon bot.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "discord.js": "^13.8.1",
+    "dotenv": "^16.0.1"
+  }
+}
