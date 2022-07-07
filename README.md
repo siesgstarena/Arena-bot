@@ -1,7 +1,11 @@
-# dicord-bot
+# Dicord-bot
 Discord.js Docs : https://discord.js.org/#/docs/discord.js/main/general/welcome
 <br>
 Dicord Embed : https://discordjs.guide/popular-topics/embeds.html#using-the-embed-constructor
+<br>
+Arena Api Docs : http://arena.siesgst.ac.in/api/docs
+<br>
+YouTube Playlist : https://www.youtube.com/playlist?list=PLaxxQQak6D_f4Z5DtQo0b1McgjLVHmE8Q
 
 <h1>Commands</h1>
 
