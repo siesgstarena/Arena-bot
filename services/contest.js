@@ -11,8 +11,9 @@ const {
   ARENA_USER_PROFILE,
   GITHUB_PROFILE_IMAGE,
   ARENA_HEADER,
+  CONTEST_LINK,
 } = require("../helper/constants");
-
+const {urlMe} = require("../helper/styles")
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(localizedFormat);
@@ -45,6 +46,7 @@ const showContest=async()=>{
         item["status"]="Upcoming Contest"
         item["name"]=contests[c].name
         item["type"] = contests[c].type;
+        item["code"]=contests[c].code
         item["start"] = `${start.format("llll")} IST`
         item["end"] = `${end.format("llll")} IST`
         dict.push(item)
@@ -54,6 +56,7 @@ const showContest=async()=>{
         let item = {};
         item["status"] = "Live Contest";
         item["name"] = contests[c].name;
+        item["code"] = contests[c].code;
         item["type"] = contests[c].type;
         item["start"] = `${start.format("llll")} IST`
         item["end"] = `${end.format("llll")} IST`
@@ -81,7 +84,7 @@ const showContest=async()=>{
         if(dict[i].status==="Live Contest"){
           exampleEmbed.addFields({
             name: `${dict[i].name}`,
-            value: `Start: ${dict[i].start}\nEnd: ${dict[i].end}`,
+            value: `Start: ${dict[i].start}\nEnd: ${dict[i].end}\n${urlMe("See More",CONTEST_LINK(dict[i].code))}`,
             inline: true,
           });
         }
@@ -96,7 +99,7 @@ const showContest=async()=>{
         if (dict[i].status === "Upcoming Contest") {
           exampleEmbed.addFields({
             name: `${dict[i].name}`,
-            value: `Start: ${dict[i].start}\nEnd: ${dict[i].end}`,
+            value: `Start: ${dict[i].start}\nEnd: ${dict[i].end}\n${urlMe("See More",CONTEST_LINK(dict[i].code))}`,
             inline: true,
           });
           flag=true

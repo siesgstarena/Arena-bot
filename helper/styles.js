@@ -13,5 +13,8 @@ module.exports = {
     },
     codeMe:(text)=>{
         return ``+text+``
+    },
+    urlMe:(name,url)=>{
+        return `[${name}](${url})`
     }
 }

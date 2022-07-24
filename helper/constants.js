@@ -9,5 +9,8 @@ module.exports = {
     },
     ARENA_HEADER : {
         "Accept": "application/vnd.arena+json;version=1",
+    },
+    CONTEST_LINK : (contestCode)=>{
+        return `http://arena.siesgst.ac.in/contest/${contestCode}`
     }
 }
