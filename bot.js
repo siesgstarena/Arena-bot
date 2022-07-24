@@ -2,6 +2,7 @@ const { Client, Intents,Constants } = require('discord.js');
 require('dotenv').config();
 const fetchUser = require('./services/user');
 const initCommands = require('./commands');
+const { showContest } = require('./services/contest');
 const GENERAL_CHANNEL = "994182456913702924"
 
 
@@ -40,6 +41,12 @@ client.on('interactionCreate', async interaction => {
         interaction.reply({
             embeds: [user],
         })
+    }
+    else if (commandName==="contest"){
+        const UpcomingContest= await showContest();
+        interaction.reply({
+            embeds: [UpcomingContest],
+        });
     }
 
 })
