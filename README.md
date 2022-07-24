@@ -15,4 +15,4 @@ YouTube Playlist : https://www.youtube.com/playlist?list=PLaxxQQak6D_f4Z5DtQo0b1
 - [ ] Help Command
 - [ ] Create A Poll
 - [ ] Afetr each contest show user ratings if upgrade show in green if degrade show in red
-- [ ] Upcoming Contest
+- [x] Upcoming Contest

@@ -1,4 +1,8 @@
 const axios = require("axios");
+const dayjs = require("dayjs");
+var utc = require("dayjs/plugin/utc");
+var timezone = require("dayjs/plugin/timezone");
+var localizedFormat = require("dayjs/plugin/localizedFormat");
 const { MessageEmbed } = require("discord.js");
 const { boldMe } = require("../helper/styles");
 const {
@@ -8,6 +12,10 @@ const {
   GITHUB_PROFILE_IMAGE,
   ARENA_HEADER,
 } = require("../helper/constants");
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(localizedFormat);
 
 // Gets all the contests
 const getContests=async()=>{
@@ -29,20 +37,16 @@ const showContest=async()=>{
     let dict=[]
 
     for(let c in contests){
-      let start = new Date(contests[c].startsAt);
-      let end = new Date(contests[c].endsAt);
-      const currentDateAndTime = new Date();
+      let start = dayjs(contests[c].startsAt)
+      let end = dayjs(contests[c].endsAt)
+      const currentDateAndTime = dayjs().tz("Asia/Kolkata");
       if(currentDateAndTime<start){
         let item={}
         item["status"]="Upcoming Contest"
         item["name"]=contests[c].name
         item["type"] = contests[c].type;
-        item["start"] = start
-          .toString()
-          .replace("GMT+0530 (India Standard Time)","IST");
-        item["end"] = end
-          .toString()
-          .replace("GMT+0530 (India Standard Time)", "IST");
+        item["start"] = `${start.format("llll")} IST`
+        item["end"] = `${end.format("llll")} IST`
         dict.push(item)
       }
 
@@ -51,12 +55,8 @@ const showContest=async()=>{
         item["status"] = "Live Contest";
         item["name"] = contests[c].name;
         item["type"] = contests[c].type;
-        item["start"] = start
-          .toString()
-          .replace("GMT+0530 (India Standard Time)", "IST");
-        item["end"] = end
-          .toString()
-          .replace("GMT+0530 (India Standard Time)", "IST");
+        item["start"] = `${start.format("llll")} IST`
+        item["end"] = `${end.format("llll")} IST`
         dict.push(item);
       }
 
