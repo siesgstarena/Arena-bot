@@ -11,7 +11,7 @@ YouTube Playlist : https://www.youtube.com/playlist?list=PLaxxQQak6D_f4Z5DtQo0b1
 <h1>Primary</h1>
 
 - [x] Basic User Info
-- [ ] All Time Top 5 Coders
+- [ ] Get Event info about official codechef (Upcoming Contest)
 - [ ] Help Command
 - [ ] Create A Poll
 - [x] Upcoming Contest
@@ -21,3 +21,4 @@ YouTube Playlist : https://www.youtube.com/playlist?list=PLaxxQQak6D_f4Z5DtQo0b1
 
 - [ ] Top 5 Coders For a given contest
 - [ ] Afetr each contest show user ratings if upgrade show in green if degrade show in red
+- [ ] All Time Top 5 Coders
