@@ -1,10 +1,10 @@
-const { Client, Intents,Constants } = require('discord.js');
+const { Client, Intents, Constants } = require('discord.js');
 require('dotenv').config();
 const fetchUser = require('./services/user');
 const initCommands = require('./commands');
 const { showContest } = require('./services/contest');
-const {getPresentContests} = require('./services/cspresent');
-const {getFutureContests} = require('./services/csupcoming');
+const { getPresentContests } = require('./services/cspresent');
+const { getFutureContests } = require('./services/csupcoming');
 const GENERAL_CHANNEL = "994182456913702924"
 
 
@@ -44,23 +44,40 @@ client.on('interactionCreate', async interaction => {
             embeds: [user],
         })
     }
-    else if (commandName==="contest"){
-        const UpcomingContest= await showContest();
+    else if (commandName === "contest") {
+        const UpcomingContest = await showContest();
         interaction.reply({
             embeds: [UpcomingContest],
         });
     }
-    else if (commandName==="cspresent"){
-        const presentCodechefContest = await getPresentContests();
-        interaction.reply({
-            embeds: [presentCodechefContest],
-        });
+    else if (commandName === "cspresent") {
+        try {
+
+            const presentCodechefContest = await getPresentContests();
+            interaction.reply({
+                embeds: [presentCodechefContest],
+            });
+        }
+        catch (err) {
+            console.log(err)
+            interaction.reply({
+                content: "Something went wrong",
+            });
+        }
     }
-    else if (commandName==="csupcoming"){
-        const futureCodechefContest = await getFutureContests();
-        interaction.reply({
-            embeds: [futureCodechefContest],
-        });
+    else if (commandName === "csupcoming") {
+        try {
+
+            const futureCodechefContest = await getFutureContests();
+            interaction.reply({
+                embeds: [futureCodechefContest],
+            });
+        } catch (err) {
+            console.log(err)
+            interaction.reply({
+                content: "Something went wrong",
+            });
+        }
     }
 
 })
