@@ -12,5 +12,9 @@ module.exports = {
     },
     CONTEST_LINK : (contestCode)=>{
         return `http://arena.siesgst.ac.in/contest/${contestCode}`
+    },
+    CODECHEF_LOGO:'https://i.pinimg.com/originals/c5/d9/fc/c5d9fc1e18bcf039f464c2ab6cfb3eb6.jpg',
+    CODECHEF_CONTEST_LINK:(contestCode)=>{
+        return `https://www.codechef.com/${contestCode}`
     }
 }

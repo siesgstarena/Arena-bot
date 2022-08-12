@@ -21,5 +21,13 @@ const initCommands = (commands) => {
     name: "contest",
     description: "Get Live and Upcoming Contests",
   });
+  commands?.create({
+    name: "cspresent",
+    description: "Get Live Contest info of Codechef",
+  });
+  commands?.create({
+    name: "csupcoming",
+    description: "Get Future Contest info of Codechef",
+  });
 };
 module.exports = initCommands;

@@ -3,6 +3,8 @@ require('dotenv').config();
 const fetchUser = require('./services/user');
 const initCommands = require('./commands');
 const { showContest } = require('./services/contest');
+const {getPresentContests} = require('./services/cspresent');
+const {getFutureContests} = require('./services/csupcoming');
 const GENERAL_CHANNEL = "994182456913702924"
 
 
@@ -46,6 +48,18 @@ client.on('interactionCreate', async interaction => {
         const UpcomingContest= await showContest();
         interaction.reply({
             embeds: [UpcomingContest],
+        });
+    }
+    else if (commandName==="cspresent"){
+        const presentCodechefContest = await getPresentContests();
+        interaction.reply({
+            embeds: [presentCodechefContest],
+        });
+    }
+    else if (commandName==="csupcoming"){
+        const futureCodechefContest = await getFutureContests();
+        interaction.reply({
+            embeds: [futureCodechefContest],
         });
     }
 
