@@ -22,10 +22,16 @@ class Codechef {
         };
         var curr_time = new Date();
         if (this.token == null || curr_time >= this.expires) {
-            const res = await axios.post(TOKEN_URL, dat_token, params);
-            this.token = await res.data.result.data.access_token;
-            const expire_in = await res.data.result.data.expires_in;
-            this.expires = date.addSeconds(curr_time, expire_in);
+            try{
+
+                const res = await axios.post(TOKEN_URL, dat_token, params);
+                this.token = await res.data.result.data.access_token;
+                const expire_in = await res.data.result.data.expires_in;
+                this.expires = date.addSeconds(curr_time, expire_in);
+            }
+            catch(err){
+                console.log(err);
+            }
         }
         return this.token;
     }
