@@ -11,7 +11,7 @@ YouTube Playlist : https://www.youtube.com/playlist?list=PLaxxQQak6D_f4Z5DtQo0b1
 <h1>Primary</h1>
 
 - [x] Basic User Info
-- [ ] Get Event info about official codechef (Upcoming Contest)
+- [x] Get Event info about official codechef (Upcoming Contest)
 - [ ] Help Command
 - [ ] Create A Poll
 - [x] Upcoming Contest
