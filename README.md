@@ -13,7 +13,7 @@ YouTube Playlist : https://www.youtube.com/playlist?list=PLaxxQQak6D_f4Z5DtQo0b1
 - [x] Basic User Info
 - [x] Get Event info about official codechef (Upcoming Contest)
 - [ ] Help Command
-- [ ] Create A Poll
+- [x] Create A Poll
 - [x] Upcoming Contest
 - [x] Assigning a role (make sure that the one who running the command have privilege to give the particular role)
 
