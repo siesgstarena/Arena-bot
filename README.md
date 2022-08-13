@@ -15,7 +15,7 @@ YouTube Playlist : https://www.youtube.com/playlist?list=PLaxxQQak6D_f4Z5DtQo0b1
 - [ ] Help Command
 - [ ] Create A Poll
 - [x] Upcoming Contest
-- [ ] Assigning a role (make sure that the one who running the command have privilege to give the particular role)
+- [x] Assigning a role (make sure that the one who running the command have privilege to give the particular role)
 
 <h3>Secondary</h3>
 
