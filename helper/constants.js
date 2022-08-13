@@ -16,5 +16,6 @@ module.exports = {
     CODECHEF_LOGO:'https://i.pinimg.com/originals/c5/d9/fc/c5d9fc1e18bcf039f464c2ab6cfb3eb6.jpg',
     CODECHEF_CONTEST_LINK:(contestCode)=>{
         return `https://www.codechef.com/${contestCode}`
-    }
+    },
+    PREVILAGE_TO_GIVE_ROLES:['1007879163526516817']
 }

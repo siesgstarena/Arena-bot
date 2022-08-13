@@ -1,4 +1,4 @@
-const { String } = require("./helper/datatypes");
+const { String, ROLE, USER } = require("./helper/datatypes");
 
 const initCommands = (commands) => {
   commands?.create({
@@ -28,6 +28,42 @@ const initCommands = (commands) => {
   commands?.create({
     name: "csupcoming",
     description: "Get Future Contest info of Codechef",
+  });
+  commands?.create({
+    name: "roles",
+    description: "A role can be added to a user",
+    options: [
+      {
+        name: "role",
+        description: "give the role name",
+        type: ROLE,
+        required: true,
+      },
+      {
+        name: "user",
+        description: "give the user name",
+        type: USER,
+        required: true,
+      },
+    ],
+  });
+  commands?.create({
+    name: "rmrole",
+    description: "remove a role from a user",
+    options: [
+      {
+        name: "role",
+        description: "give the role name",
+        type: ROLE,
+        required: true,
+      },
+      {
+        name: "user",
+        description: "give the user name",
+        type: USER,
+        required: true,
+      },
+    ],
   });
 };
 module.exports = initCommands;

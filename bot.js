@@ -5,6 +5,7 @@ const initCommands = require('./commands');
 const { showContest } = require('./services/contest');
 const { getPresentContests } = require('./services/cspresent');
 const { getFutureContests } = require('./services/csupcoming');
+const {PREVILAGE_TO_GIVE_ROLES} = require('./helper/constants');
 const GENERAL_CHANNEL = "994182456913702924"
 
 
@@ -72,6 +73,56 @@ client.on('interactionCreate', async interaction => {
             interaction.reply({
                 embeds: [futureCodechefContest],
             });
+        } catch (err) {
+            console.log(err)
+            interaction.reply({
+                content: "Something went wrong",
+            });
+        }
+    }
+    else if (commandName === "roles") {
+        try {
+            if (interaction.member.roles.cache.has(...PREVILAGE_TO_GIVE_ROLES)) {
+                const role = options.getRole('role')
+                const user = options.getUser('user')
+                const member = interaction.guild.members.cache.get(user.id)
+                console.log(role)
+                await member.roles.add(role)
+                interaction.reply({
+                    content: `<@${user.id}> has been given the role @${role.name}`,
+                });
+            } 
+            else{
+
+                interaction.reply({
+                    content: "Oops you don't have permissions to do that!",
+                });
+            }
+        } catch (err) {
+            console.log(err)
+            interaction.reply({
+                content: "Something went wrong",
+            });
+        }
+    }
+    else if (commandName === "rmrole") {
+        try {
+            if (interaction.member.roles.cache.has(...PREVILAGE_TO_GIVE_ROLES)) {
+                const role = options.getRole('role')
+                const user = options.getUser('user')
+                const member = interaction.guild.members.cache.get(user.id)
+                console.log(role)
+                await member.roles.remove(role)
+                interaction.reply({
+                    content: `<@${user.id}> has been remove the role @${role.name}`,
+                });
+            } 
+            else{
+
+                interaction.reply({
+                    content: "Oops you don't have permissions to do that!",
+                });
+            }
         } catch (err) {
             console.log(err)
             interaction.reply({
