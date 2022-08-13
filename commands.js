@@ -65,5 +65,23 @@ const initCommands = (commands) => {
       },
     ],
   });
+  commands?.create({
+    name: "poll",
+    description: "Create a poll",
+    options: [
+      {
+        name: "title",
+        description: "Title of the poll",
+        type: String,
+        required: true,
+      },
+      {
+        name: "options",
+        description: "Options of the poll",
+        type: String,
+        required: true,
+      },
+    ],
+  });
 };
 module.exports = initCommands;

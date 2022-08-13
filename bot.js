@@ -1,11 +1,13 @@
 const { Client, Intents, Constants } = require('discord.js');
 require('dotenv').config();
+const { MessageEmbed } = require('discord.js');
 const fetchUser = require('./services/user');
 const initCommands = require('./commands');
 const { showContest } = require('./services/contest');
 const { getPresentContests } = require('./services/cspresent');
 const { getFutureContests } = require('./services/csupcoming');
-const {PREVILAGE_TO_GIVE_ROLES} = require('./helper/constants');
+const { PREVILAGE_TO_GIVE_ROLES } = require('./helper/constants');
+const {createPoll} = require('./services/poll');
 const GENERAL_CHANNEL = "994182456913702924"
 
 
@@ -91,9 +93,8 @@ client.on('interactionCreate', async interaction => {
                 interaction.reply({
                     content: `<@${user.id}> has been given the role @${role.name}`,
                 });
-            } 
-            else{
-
+            }
+            else {
                 interaction.reply({
                     content: "Oops you don't have permissions to do that!",
                 });
@@ -116,9 +117,8 @@ client.on('interactionCreate', async interaction => {
                 interaction.reply({
                     content: `<@${user.id}> has been remove the role @${role.name}`,
                 });
-            } 
-            else{
-
+            }
+            else {
                 interaction.reply({
                     content: "Oops you don't have permissions to do that!",
                 });
@@ -129,6 +129,11 @@ client.on('interactionCreate', async interaction => {
                 content: "Something went wrong",
             });
         }
+    }
+    else if (commandName === "poll") {
+        const title = options.getString('title');
+        const option = options.getString('options').split(',');
+        await createPoll(title, option, interaction)
     }
 
 })
