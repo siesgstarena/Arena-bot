@@ -11,7 +11,6 @@ const {
 async function getFutureContests() {
   var CONTEST_URL = "https://api.codechef.com/contests?fields=code,name,startDate,endDate&status=future";
   var token = await Codechef.makeToken();
-  console.log(token);
   var params = {
     headers: {
       "Content-Type": "application/json",

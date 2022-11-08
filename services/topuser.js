@@ -1,5 +1,6 @@
 const { default: axios } = require("axios");
 const { MessageEmbed } = require("discord.js");
+const { error } = require("../config/winston");
 const { ARENA_HEADER, ARENA_LOGO, ARENA_USER_PROFILE } = require("../helper/constants")
 
 const fetchTopUsers = async (limit = 5) => {
@@ -22,7 +23,7 @@ const fetchTopUsers = async (limit = 5) => {
     return embed;
   }
   catch (err) {
-    console.log(err);
+    error.error(err);
     return new MessageEmbed()
       .setTitle("Error")
   }

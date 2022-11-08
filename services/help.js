@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const { error } = require("../config/winston");
 const { ARENA_LOGO } = require("../helper/constants");
 
 const helpCommand = () => {
@@ -14,7 +15,7 @@ const helpCommand = () => {
     return embed;
   }
   catch (err) {
-    console.log(err);
+    error.error(err);
     return new MessageEmbed()
       .setTitle("Error")
   }

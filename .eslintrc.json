@@ -5,7 +5,7 @@
   },
   "extends": "eslint:recommended",
   "rules": {
-      "no-console": "off",
+      "no-console": 1,
       "no-underscore-dangle": "off",
       "no-param-reassign": "off",
       "no-unused-vars": "error",

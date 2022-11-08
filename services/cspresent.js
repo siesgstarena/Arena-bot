@@ -2,6 +2,7 @@ const axios = require("axios");
 const { MessageEmbed } = require("discord.js");
 const { urlMe } = require("../helper/styles")
 const Codechef = require('../public/CodeChef')
+const {log} = require('../config/winston');
 const {
   CODECHEF_LOGO,
   CODECHEF_CONTEST_LINK,
@@ -11,7 +12,7 @@ const {
 async function getPresentContests() {
   var CONTEST_URL = "https://api.codechef.com/contests?fields=code,name,startDate,endDate&status=present";
   var token = await Codechef.makeToken();
-  console.log(token);
+  log.info(token);
   var params = {
     headers: {
       "Content-Type": "application/json",

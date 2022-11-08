@@ -1,13 +1,14 @@
 const axios = require("axios");
 const date = require("date-and-time");
+const {log,error} = require('../config/winston');
 require("dotenv").config();
 class Codechef {
   static token = null;
   static expires = null;
   static async makeToken() {
     var TOKEN_URL = "https://api.codechef.com/oauth/token";
-    console.log("Making token 1");
-    console.log("Token is ", this.token)
+    log.info("Making token");
+    log.info(this.token);
     var dat_token = {
       "grant_type": "client_credentials",
       "scope": "public",
@@ -30,7 +31,7 @@ class Codechef {
         this.expires = date.addSeconds(curr_time, expire_in);
       }
       catch (err) {
-        console.log(err);
+        error.error(err);
       }
     }
     return this.token;

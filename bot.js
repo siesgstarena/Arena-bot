@@ -10,6 +10,7 @@ const { createPoll } = require('./services/poll');
 const fetchTopCoders = require('./services/topCodersContest');
 const fetchTopUsers = require('./services/topuser');
 const helpCommand = require('./services/help');
+const {log,error} = require('./config/winston');
 const GENERAL_CHANNEL = "994182456913702924"
 
 const client = new Client({
@@ -18,7 +19,7 @@ const client = new Client({
 });
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  log.info(`Logged in as ${client.user.tag}!`);
 
   const guild = client.guilds.cache.get(GENERAL_CHANNEL);
   let commands
@@ -76,7 +77,7 @@ client.on('interactionCreate', async interaction => {
       });
     }
     catch (err) {
-      console.log(err)
+      error.error(err);
       interaction.reply({
         content: "Something went wrong",
       });
@@ -90,7 +91,7 @@ client.on('interactionCreate', async interaction => {
         embeds: [futureCodechefContest],
       });
     } catch (err) {
-      console.log(err)
+      error.error(err);
       interaction.reply({
         content: "Something went wrong",
       });
@@ -102,7 +103,7 @@ client.on('interactionCreate', async interaction => {
         const role = options.getRole('role')
         const user = options.getUser('user')
         const member = interaction.guild.members.cache.get(user.id)
-        console.log(role)
+        log.info(member)
         await member.roles.add(role)
         interaction.reply({
           content: `<@${user.id}> has been given the role @${role.name}`,
@@ -114,7 +115,7 @@ client.on('interactionCreate', async interaction => {
         });
       }
     } catch (err) {
-      console.log(err)
+      error.error(err);
       interaction.reply({
         content: "Something went wrong",
       });
@@ -126,7 +127,7 @@ client.on('interactionCreate', async interaction => {
         const role = options.getRole('role')
         const user = options.getUser('user')
         const member = interaction.guild.members.cache.get(user.id)
-        console.log(role)
+        log.info(member)
         await member.roles.remove(role)
         interaction.reply({
           content: `<@${user.id}> has been remove the role @${role.name}`,
@@ -138,7 +139,7 @@ client.on('interactionCreate', async interaction => {
         });
       }
     } catch (err) {
-      console.log(err)
+      error.error(err);
       interaction.reply({
         content: "Something went wrong",
       });

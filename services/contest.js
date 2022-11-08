@@ -9,6 +9,7 @@ const {
   ARENA_HEADER,
   CONTEST_LINK,
 } = require("../helper/constants");
+const {log,error} = require('../config/winston');
 const { urlMe } = require("../helper/styles")
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -23,7 +24,7 @@ const getContests = async () => {
     const contests = res.data;
     return contests
   } catch (err) {
-    console.log(err);
+    error.error(err)
   }
 }
 
@@ -63,10 +64,9 @@ const showContest = async () => {
         continue
       }
       else {
-        console.log("Contest Comming Soon")
+        log.info("Contest Comming Soon")
       }
     }
-    console.log(dict)
 
     const exampleEmbed = new MessageEmbed()
       .setColor("#0099ff")
@@ -114,7 +114,7 @@ const showContest = async () => {
     return exampleEmbed
   }
   catch (err) {
-    console.log(err)
+    error.error(err)
     return new MessageEmbed().setTitle("Error");
   }
 }

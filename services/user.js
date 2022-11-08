@@ -4,6 +4,7 @@ const { boldMe } = require('../helper/styles')
 const { ARENA_LOGO, ARENA_DEFAULT_PROFILE_LOGO, ARENA_USER_PROFILE, GITHUB_PROFILE_IMAGE, ARENA_HEADER } = require('../helper/constants');
 
 const QuickChart = require('quickchart-js');
+const { error } = require('../config/winston');
 
 const makeProfileGraph = (rantingChange) => {
   var xValues = [];
@@ -65,7 +66,7 @@ const fetchUser = async (username) => {
     return exampleEmbed;
   }
   catch (err) {
-    console.log(err);
+    error.error(err);
     return new MessageEmbed()
       .setTitle("Error")
   }
