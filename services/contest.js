@@ -4,12 +4,8 @@ var utc = require("dayjs/plugin/utc");
 var timezone = require("dayjs/plugin/timezone");
 var localizedFormat = require("dayjs/plugin/localizedFormat");
 const { MessageEmbed } = require("discord.js");
-const { boldMe } = require("../helper/styles");
 const {
   ARENA_LOGO,
-  ARENA_DEFAULT_PROFILE_LOGO,
-  ARENA_USER_PROFILE,
-  GITHUB_PROFILE_IMAGE,
   ARENA_HEADER,
   CONTEST_LINK,
 } = require("../helper/constants");
@@ -122,6 +118,5 @@ const showContest=async()=>{
     return new MessageEmbed().setTitle("Error");
   }
 }
-
 
 module.exports={getContests, showContest}

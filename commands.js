@@ -1,4 +1,4 @@
-const { String, ROLE, USER ,Integer, Number} = require("./helper/datatypes");
+const { String, ROLE, USER , Number} = require("./helper/datatypes");
 
 const initCommands = (commands) => {
   commands?.create({

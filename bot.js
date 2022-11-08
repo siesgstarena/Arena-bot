@@ -1,6 +1,5 @@
-const { Client, Intents, Constants } = require('discord.js');
+const { Client, Intents } = require('discord.js');
 require('dotenv').config();
-const { MessageEmbed } = require('discord.js');
 const fetchUser = require('./services/user');
 const initCommands = require('./commands');
 const { showContest } = require('./services/contest');
@@ -13,7 +12,6 @@ const fetchTopUsers = require('./services/topuser');
 const helpCommand = require('./services/help');
 const GENERAL_CHANNEL = "994182456913702924"
 
-
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
     partials: ['MESSAGE']
@@ -21,7 +19,6 @@ const client = new Client({
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-
 
     const guild = client.guilds.cache.get(GENERAL_CHANNEL);
     let commands
@@ -33,7 +30,6 @@ client.on('ready', () => {
     }
     initCommands(commands)
 });
-
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
