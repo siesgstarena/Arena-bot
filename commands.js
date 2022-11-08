@@ -1,4 +1,4 @@
-const { String, ROLE, USER } = require("./helper/datatypes");
+const { String, ROLE, USER ,Integer, Number} = require("./helper/datatypes");
 
 const initCommands = (commands) => {
   commands?.create({
@@ -80,6 +80,23 @@ const initCommands = (commands) => {
         description: "Options of the poll",
         type: String,
         required: true,
+      },
+    ],
+  });
+  commands?.create({
+    name:'topusercontest',
+    description:'Get top users of a particular contest',
+    options:[
+      {
+        name:'contest',
+        description:'Code of the contest',
+        type:String,
+        required:true,
+      },
+      {
+        name:'limit',
+        description:'Number of users to be displayed',
+        type:Number,
       },
     ],
   });

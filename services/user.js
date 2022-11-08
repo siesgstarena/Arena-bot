@@ -62,7 +62,8 @@ const fetchUser = async (username) => {
             .setImage(makeProfileGraph(user.rantingChange).getUrl())
             .setTimestamp()
             .setFooter({
-                text: 'Thanks For Remebering Me', iconURL: `${GITHUB_PROFILE_IMAGE(user.githubLink)}`
+                text: 'Powered by Arena',
+                iconURL: ARENA_LOGO
             });
         return exampleEmbed;
     }

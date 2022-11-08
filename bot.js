@@ -8,6 +8,7 @@ const { getPresentContests } = require('./services/cspresent');
 const { getFutureContests } = require('./services/csupcoming');
 const { PREVILAGE_TO_GIVE_ROLES } = require('./helper/constants');
 const {createPoll} = require('./services/poll');
+const fetchTopCoders = require('./services/topCodersContest');
 const GENERAL_CHANNEL = "994182456913702924"
 
 
@@ -45,6 +46,14 @@ client.on('interactionCreate', async interaction => {
         const user = await fetchUser(username);
         interaction.reply({
             embeds: [user],
+        })
+    }
+    else if(commandName === 'topusercontest'){
+        const contestCode = options.getString('contest');
+        const limit = options.getNumber('limit');
+        const topCoders = await fetchTopCoders(contestCode,limit);
+        interaction.reply({
+            embeds: [topCoders],
         })
     }
     else if (commandName === "contest") {

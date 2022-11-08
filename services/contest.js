@@ -111,6 +111,10 @@ const showContest=async()=>{
           value: "\u200B",
         });
       }
+      exampleEmbed.setFooter({
+        text: 'Powered by Arena',
+        iconURL: ARENA_LOGO
+    })
       return exampleEmbed
   } 
   catch (err) {

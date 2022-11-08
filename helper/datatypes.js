@@ -5,5 +5,6 @@ module.exports={
     Boolean : Constants.ApplicationCommandOptionTypes.BOOLEAN,
     USER : Constants.ApplicationCommandOptionTypes.USER,
     CHANNEL : Constants.ApplicationCommandOptionTypes.CHANNEL,
-    ROLE : Constants.ApplicationCommandOptionTypes.ROLE
+    ROLE : Constants.ApplicationCommandOptionTypes.ROLE,
+    Number : Constants.ApplicationCommandOptionTypes.NUMBER,
 }
