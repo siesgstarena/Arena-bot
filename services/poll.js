@@ -13,10 +13,12 @@ async function createPoll(title, option, interaction) {
       .setDescription(description)
       .setFooter({ text: `Poll created by @${user}` });
 
-    const currentChannel = interaction.channel;
-    const message = await currentChannel.send({ embeds: [embed] });
+    const msg = await interaction.reply({
+      embeds: [embed],
+      fetchReply: true
+    });
     for (let i = 0; i < option.length; i++) {
-      await message.react(alphabates[i]);
+      await msg.react(alphabates[i]);
     }
   } else {
     interaction.reply({

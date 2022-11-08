@@ -10,7 +10,7 @@ const helpCommand = () => {
         text: 'Powered by Arena',
         iconURL: ARENA_LOGO
       });
-    embed.addField("Commands", "`/user` - Get user details\n`/topuser` - Get top users\n`/topusercontest` - Get top users of a contest\n`/contest` - Get contest details\n`/cspresent` - Get present contests\n`/csupcoming` - Get upcoming contests\n`/poll` - Create a poll\n`/help` - Get help");
+    embed.addField("Commands", "`/user` - Get user details\n`/topuser` - Get top users\n`/topusercontest` - Get top users of a contest\n`/contest` - Get contest details of Arena\n`/cspresent` - Get CodeChef present contests\n`/csupcoming` - Get CodeChef upcoming contests\n`/poll` - Create a poll\n`/help` - Get help");
     return embed;
   }
   catch (err) {

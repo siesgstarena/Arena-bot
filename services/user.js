@@ -6,15 +6,12 @@ const { ARENA_LOGO, ARENA_DEFAULT_PROFILE_LOGO, ARENA_USER_PROFILE, GITHUB_PROFI
 const QuickChart = require('quickchart-js');
 
 const makeProfileGraph = (rantingChange) => {
-  console.log(rantingChange);
   var xValues = [];
   var yValues = [];
   rantingChange.map(val => {
     xValues.push(val.contestCode)
     yValues.push(val.ratings)
   })
-  console.log(xValues);
-  console.log(yValues);
   const chart = new QuickChart();
   chart
     .setConfig({
