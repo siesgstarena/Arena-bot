@@ -1,4 +1,4 @@
-const { String, ROLE, USER , Number} = require("./helper/datatypes");
+const { String, ROLE, USER, Number } = require("./helper/datatypes");
 
 const initCommands = (commands) => {
   commands?.create({
@@ -80,36 +80,36 @@ const initCommands = (commands) => {
     ],
   });
   commands?.create({
-    name:'topusercontest',
-    description:'Get top users of a particular contest Default limit is 5',
-    options:[
+    name: 'topusercontest',
+    description: 'Get top users of a particular contest Default limit is 5',
+    options: [
       {
-        name:'contest',
-        description:'Code of the contest',
-        type:String,
-        required:true,
+        name: 'contest',
+        description: 'Code of the contest',
+        type: String,
+        required: true,
       },
       {
-        name:'limit',
-        description:'Number of users to be displayed',
-        type:Number,
-      },
-    ],
-  });
-  commands?.create({
-    name:'topuser',
-    description:'Get top users of all time Default limit is 5',
-    options:[
-      {
-        name:'limit',
-        description:'Number of users to be displayed',
-        type:Number,
+        name: 'limit',
+        description: 'Number of users to be displayed',
+        type: Number,
       },
     ],
   });
   commands?.create({
-    name:'help',
-    description:'Get help',
+    name: 'topuser',
+    description: 'Get top users of all time Default limit is 5',
+    options: [
+      {
+        name: 'limit',
+        description: 'Number of users to be displayed',
+        type: Number,
+      },
+    ],
+  });
+  commands?.create({
+    name: 'help',
+    description: 'Get help',
   });
 };
 module.exports = initCommands;

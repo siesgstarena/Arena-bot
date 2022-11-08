@@ -9,16 +9,16 @@ const {
   ARENA_HEADER,
   CONTEST_LINK,
 } = require("../helper/constants");
-const {urlMe} = require("../helper/styles")
+const { urlMe } = require("../helper/styles")
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(localizedFormat);
 
 // Gets all the contests
-const getContests=async()=>{
+const getContests = async () => {
   try {
     const res = await axios.get(
-      `http://arena.siesgst.ac.in/api/contests`,{ headers: ARENA_HEADER }
+      `http://arena.siesgst.ac.in/api/contests`, { headers: ARENA_HEADER }
     );
     const contests = res.data;
     return contests
@@ -27,28 +27,28 @@ const getContests=async()=>{
   }
 }
 
-const showContest=async()=>{
+const showContest = async () => {
   try {
-    const contests= await getContests()
+    const contests = await getContests()
 
-    let dict=[]
+    let dict = []
 
-    for(let c in contests){
+    for (let c in contests) {
       let start = dayjs(contests[c].startsAt)
       let end = dayjs(contests[c].endsAt)
       const currentDateAndTime = dayjs().tz("Asia/Kolkata");
-      if(currentDateAndTime<start){
-        let item={}
-        item["status"]="Upcoming Contest"
-        item["name"]=contests[c].name
+      if (currentDateAndTime < start) {
+        let item = {}
+        item["status"] = "Upcoming Contest"
+        item["name"] = contests[c].name
         item["type"] = contests[c].type;
-        item["code"]=contests[c].code
+        item["code"] = contests[c].code
         item["start"] = `${start.format("llll")} IST`
         item["end"] = `${end.format("llll")} IST`
         dict.push(item)
       }
 
-      else if(currentDateAndTime>=start && currentDateAndTime<=end){
+      else if (currentDateAndTime >= start && currentDateAndTime <= end) {
         let item = {};
         item["status"] = "Live Contest";
         item["name"] = contests[c].name;
@@ -59,10 +59,10 @@ const showContest=async()=>{
         dict.push(item);
       }
 
-      else if(currentDateAndTime>end){
+      else if (currentDateAndTime > end) {
         continue
       }
-      else{
+      else {
         console.log("Contest Comming Soon")
       }
     }
@@ -72,51 +72,51 @@ const showContest=async()=>{
       .setColor("#0099ff")
       .setTitle("CONTESTS")
       .setThumbnail(ARENA_LOGO)
-      exampleEmbed.addFields({
-        name: "LIVE NOW",
-        value: "\u200B",
-      });
-      for (let i in dict) {
-        if(dict[i].status==="Live Contest"){
-          exampleEmbed.addFields({
-            name: `${dict[i].name}`,
-            value: `Start: ${dict[i].start}\nEnd: ${dict[i].end}\n${urlMe("See More",CONTEST_LINK(dict[i].code))}`,
-            inline: true,
-          });
-        }
-      }
-      exampleEmbed.addFields({ name: "\u200B", value: "\u200B" });
-      exampleEmbed.addFields({
-        name: "UPCOMING CONTEST",
-        value: "\u200B",
-      });
-      let flag=false
-      for (let i in dict) {
-        if (dict[i].status === "Upcoming Contest") {
-          exampleEmbed.addFields({
-            name: `${dict[i].name}`,
-            value: `Start: ${dict[i].start}\nEnd: ${dict[i].end}\n${urlMe("See More",CONTEST_LINK(dict[i].code))}`,
-            inline: true,
-          });
-          flag=true
-        }
-      }
-      if(flag==false){
+    exampleEmbed.addFields({
+      name: "LIVE NOW",
+      value: "\u200B",
+    });
+    for (let i in dict) {
+      if (dict[i].status === "Live Contest") {
         exampleEmbed.addFields({
-          name: "Contest Coming Soon",
-          value: "\u200B",
+          name: `${dict[i].name}`,
+          value: `Start: ${dict[i].start}\nEnd: ${dict[i].end}\n${urlMe("See More", CONTEST_LINK(dict[i].code))}`,
+          inline: true,
         });
       }
-      exampleEmbed.setFooter({
-        text: 'Powered by Arena',
-        iconURL: ARENA_LOGO
+    }
+    exampleEmbed.addFields({ name: "\u200B", value: "\u200B" });
+    exampleEmbed.addFields({
+      name: "UPCOMING CONTEST",
+      value: "\u200B",
+    });
+    let flag = false
+    for (let i in dict) {
+      if (dict[i].status === "Upcoming Contest") {
+        exampleEmbed.addFields({
+          name: `${dict[i].name}`,
+          value: `Start: ${dict[i].start}\nEnd: ${dict[i].end}\n${urlMe("See More", CONTEST_LINK(dict[i].code))}`,
+          inline: true,
+        });
+        flag = true
+      }
+    }
+    if (flag == false) {
+      exampleEmbed.addFields({
+        name: "Contest Coming Soon",
+        value: "\u200B",
+      });
+    }
+    exampleEmbed.setFooter({
+      text: 'Powered by Arena',
+      iconURL: ARENA_LOGO
     })
-      return exampleEmbed
-  } 
+    return exampleEmbed
+  }
   catch (err) {
     console.log(err)
     return new MessageEmbed().setTitle("Error");
   }
 }
 
-module.exports={getContests, showContest}
+module.exports = { getContests, showContest }
