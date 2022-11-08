@@ -1,4 +1,28 @@
 # Dicord-bot
+prerequisite: 
+
+  1) Make sure to create the bot on the discord developer portal https://discord.com/developers/docs/intro
+  
+  2) CodeChef
+- To Get The Api of CodeChef You Need To Mail Them At api@codechef.com and Convey for what purpose you need there api
+- Then They Will Send One Form You Need To Fill That Form And Wait. Then You Will Get Mail From There Side And Now You Will Be Able To Get The API Token 
+- Documentation https://developers.codechef.com/#grant-types
+<h4> Get Started</h4>
+``` 
+    npm install --global yarn
+    yarn install 
+```
+Getting the configuration ready
+
+*Copy the .env.example file at the same location and save as .env*
+```
+cp .env.example .env
+```
+<h4> How To Run </h4>
+
+```
+    yarn run dev
+```
 
 Discord.js Docs : https://discord.js.org/#/docs/discord.js/main/general/welcome
 <br>
