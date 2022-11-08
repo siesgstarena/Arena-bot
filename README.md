@@ -21,4 +21,4 @@ YouTube Playlist : https://www.youtube.com/playlist?list=PLaxxQQak6D_f4Z5DtQo0b1
 <h3>Secondary</h3>
 
 - [ ] After each contest show user ratings if upgrade show in green if degrade show in red
-- [ ] All Time Top 5 Coders
+- [x] All Time Top 5 Coders

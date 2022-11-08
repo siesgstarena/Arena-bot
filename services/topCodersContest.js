@@ -21,7 +21,7 @@ const fetchTopCoders = async (contestCode, limit = 5) => {
             console.log(coder.username);
             embed.addField(`No. ${i+1}`,`[${coder.username}](${ARENA_USER_PROFILE(coder._id)})`);
             embed.addField('Points',`${coder.total}`);
-            embed.addField('solved',`${coder.solved}`);
+            embed.addField('Solved',`${coder.solved}`);
         }
         return embed;
     }

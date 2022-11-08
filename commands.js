@@ -85,7 +85,7 @@ const initCommands = (commands) => {
   });
   commands?.create({
     name:'topusercontest',
-    description:'Get top users of a particular contest',
+    description:'Get top users of a particular contest Default limit is 5',
     options:[
       {
         name:'contest',
@@ -93,6 +93,17 @@ const initCommands = (commands) => {
         type:String,
         required:true,
       },
+      {
+        name:'limit',
+        description:'Number of users to be displayed',
+        type:Number,
+      },
+    ],
+  });
+  commands?.create({
+    name:'topuser',
+    description:'Get top users of all time Default limit is 5',
+    options:[
       {
         name:'limit',
         description:'Number of users to be displayed',
