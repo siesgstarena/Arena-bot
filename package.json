@@ -9,7 +9,8 @@
     "start": "node bot.js",
     "dev": "nodemon bot.js",
     "lint": "eslint --plugin markdown --ext js,md .",
-    "fix": "eslint --fix --plugin markdown --ext js,md ."
+    "fix": "eslint --fix --plugin markdown --ext js,md .",
+    "prepare": "husky install"
   },
   "engines": {
     "node": "16.15.1",
@@ -19,6 +20,7 @@
     "eslint": "^8.27.0",
     "eslint-cli": "^1.1.1",
     "eslint-plugin-markdown": "^3.0.0",
+    "husky": "^8.0.2",
     "nodemon": "^2.0.19"
   },
   "dependencies": {
