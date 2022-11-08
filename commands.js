@@ -2,10 +2,6 @@ const { String, ROLE, USER ,Integer, Number} = require("./helper/datatypes");
 
 const initCommands = (commands) => {
   commands?.create({
-    name: "ping",
-    description: "Replies with pong",
-  });
-  commands?.create({
     name: "user",
     description: "Get Basic User Info",
     options: [
@@ -110,6 +106,10 @@ const initCommands = (commands) => {
         type:Number,
       },
     ],
+  });
+  commands?.create({
+    name:'help',
+    description:'Get help',
   });
 };
 module.exports = initCommands;

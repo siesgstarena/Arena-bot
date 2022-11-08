@@ -10,6 +10,7 @@ const { PREVILAGE_TO_GIVE_ROLES } = require('./helper/constants');
 const {createPoll} = require('./services/poll');
 const fetchTopCoders = require('./services/topCodersContest');
 const fetchTopUsers = require('./services/topuser');
+const helpCommand = require('./services/help');
 const GENERAL_CHANNEL = "994182456913702924"
 
 
@@ -37,12 +38,7 @@ client.on('ready', () => {
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
     const { commandName, options } = interaction;
-    if (commandName === 'ping') {
-        interaction.reply({
-            content: 'pong',
-        })
-    }
-    else if (commandName === 'user') {
+    if (commandName === 'user') {
         const username = options.getString('username');
         const user = await fetchUser(username);
         interaction.reply({
@@ -70,9 +66,14 @@ client.on('interactionCreate', async interaction => {
             embeds: [UpcomingContest],
         });
     }
+    else if (commandName === "help") {
+        const help = helpCommand();
+        interaction.reply({
+            embeds: [help],
+        });
+    }
     else if (commandName === "cspresent") {
         try {
-
             const presentCodechefContest = await getPresentContests();
             interaction.reply({
                 embeds: [presentCodechefContest],
@@ -154,25 +155,5 @@ client.on('interactionCreate', async interaction => {
     }
 
 })
-// client.on('messageCreate', async message => {
-//     if (message.content === '$ping') {
-//         message.channel.send('pong');
-//     }
-//     else if (message.content === '$dev-mem') {
-//         message.member.roles.add("994184063244050482");
-//     }
-//     else if (message.content.startsWith('$user')) {
-//         console.log(message.author.username);
-//         const username = message.content.split(" ")[1];
-//         if (username === undefined) {
-//             message.channel.send("Please provide a username");
-//         }
-//         else {
-//             const embededUser = await fetchUser(username);
-//             // console.log(embededUser);
-//             message.channel.send({ embeds: [embededUser] });
-//         }
-//     }
-// });
 
 client.login(process.env.BOT_TOKEN);
