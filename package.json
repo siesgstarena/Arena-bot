@@ -7,14 +7,14 @@
   "license": "MIT",
   "scripts": {
     "start": "node bot.js",
-    "dev": "nodemon bot.js",
+    "dev": "nodemon --legacy-watch bot.js",
     "lint": "eslint --plugin markdown --ext js,md .",
     "fix": "eslint --fix --plugin markdown --ext js,md .",
     "prepare": "husky install",
     "test": "jest"
   },
   "engines": {
-    "node": "16.15.1",
+    "node": "16.x",
     "yarn": "1.22.19"
   },
   "devDependencies": {

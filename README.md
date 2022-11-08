@@ -25,6 +25,16 @@ cp .env.example .env
     yarn run dev
 ```
 
+<h4>Starting the application</h4>
+
+```
+  docker compose -f .\docker-compose-dev.yml up
+```
+<h4>Remove cache and build</h4>
+
+```
+  docker compose -f .\docker-compose-dev.yml up --build --remove-orphans --force-recreate
+```
 Discord.js Docs : https://discord.js.org/#/docs/discord.js/main/general/welcome
 <br>
 Dicord Embed : https://discordjs.guide/popular-topics/embeds.html#using-the-embed-constructor

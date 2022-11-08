@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  dicordbot:
+    image: dicordbot
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: yarn run dev
