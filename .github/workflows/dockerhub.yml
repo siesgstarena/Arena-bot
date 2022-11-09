@@ -2,7 +2,7 @@ name: Docker Hub
 
 on:
   workflow_run:
-    workflows: [ "Run tests" ]
+    workflows: [ "Node.js CI" ]
     branches: [ "main" ]
     types:
       - completed
