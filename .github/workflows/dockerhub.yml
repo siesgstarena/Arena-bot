@@ -1,0 +1,34 @@
+name: Docker Hub
+
+on:
+  workflow_run:
+    workflows: [ "Run tests" ]
+    branches: [ "main" ]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+
+    - name: Build using compose file
+      run: docker compose build
+
+    - name: Tag the image
+      run: |
+        docker tag dicordbot ${{ secrets.DOCKERHUB_USERNAME }}/dicordbot:latest
+        docker tag dicordbot ${{ secrets.DOCKERHUB_USERNAME }}/dicordbot:${{ github.run_number }}
+
+    - name: Push the image
+      run: |
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/dicordbot:latest
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/dicordbot:${{ github.run_number }}
