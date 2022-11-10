@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { error } = require("../config/winston");
 const { ARENA_LOGO } = require("../helper/constants");
+const { mentionSlashCommand } = require("../helper/styles");
 
 const helpCommand = () => {
   try {
@@ -11,7 +12,7 @@ const helpCommand = () => {
         text: 'Powered by Arena',
         iconURL: ARENA_LOGO
       });
-    embed.addField("Commands", "`/user` - Get the profile details\n`/topuser` - Get top users details\n`/topusercontest` - Get top users of a contest\n`/contest` - Get contest details of Arena\n`/cspresent` - Get CodeChef present contests\n`/csupcoming` - Get CodeChef upcoming contests\n`/poll` - Create a poll\n`/help` - Get help");
+    embed.addField("Commands", `${mentionSlashCommand('user','1040155899421020160')}\nGet the profile details\n\n${mentionSlashCommand('topuser','1040155991817343026')}\nGet top users details\n\n${mentionSlashCommand('topusercontest','1040155990877798461')}\nGet top users of a contest\n\n${mentionSlashCommand('contest','1040155900670918666')}\nGet contest details of Arena\n\n${mentionSlashCommand('cspresent','1040155901249728552')}\nGet CodeChef present contests\n\n${mentionSlashCommand('csupcoming','1040155902252175420')}\nGet CodeChef upcoming contests\n\n${mentionSlashCommand('poll','1040155990072500234')}\nCreate a poll\n`);
     return embed;
   }
   catch (err) {
