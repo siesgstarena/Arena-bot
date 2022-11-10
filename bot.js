@@ -11,8 +11,8 @@ const fetchTopCoders = require('./services/topCodersContest');
 const fetchTopUsers = require('./services/topuser');
 const helpCommand = require('./services/help');
 const {log,error} = require('./config/winston');
-const GENERAL_CHANNEL = "994182456913702924"
-
+// const GENERAL_CHANNEL = "994182456913702924"
+const GENERAL_CHANNEL = "1040153470755409921"
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
   partials: ['MESSAGE']
